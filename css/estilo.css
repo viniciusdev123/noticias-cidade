@@ -1,0 +1,272 @@
+/*Estrutura do site*/
+
+* { /*Vai selecionar todo o código*/ 
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: "Treubuchet MS", Arial, Helvetica, sans-serif; /*Sempre é bom definir mais de uma fonte.*/
+    background: #fff url(../imagens/fundo.png) repeat-x;
+}
+
+#container {
+    width: 750px;
+    margin: 0 auto; /*Esse trecho vai servir para centralizar todo o nosso conteúdo*/
+}
+
+#topo {
+    height: 150px; /*altura*/
+    background: url(..//imagens/detalhe-topo.png) no-repeat right top;
+    padding-top: 25px; /*Para mostrar a imagem inteira*/
+
+}
+
+.logo {
+    width: 152px;
+    height: 66px;
+    background: url(../imagens/logo.png) no-repeat center;
+    text-indent: -3000px; /*Vai esconder as letras do usuário. É bom fazer isso, pois se o css não carregar, o html vai mostrar o nome "notícias cidade" para o usuário*/
+}
+
+/*Barra de navegação*/
+a:link, a:visited {
+    color: #b10333;
+    padding: 2px;
+}
+
+a:hover {
+    color: #e50040;
+}
+
+
+ul { /*Por padrão, vamos utilizar está mesma formatação em todo site que formos criar.*/
+    margin: 0;
+    padding: 0;
+    list-style: none; /*Para remover as bolinhas estilo tópico*/
+}
+/* \/ Isso significa que eu vou selecionar uma UL que está dentro do id topo.*/
+#topo ul{ /*Eu posso ter ul's em diversas áreas do meu site, e para diferenciar eu vou colocar um nome diferente em cada uma. Com isso, vamos colocar uma id para UL, pois vamos ter várias (lateral, topo, baixo) e é interessante marcar com uma id cada uma delas, pois assim vamos ter um melhor controle. */
+    margin-top: 30px;
+    background: #b10333;
+    float: left; /*De primeira colocamos o float apenas na ul li, porém foi necessário colocar na ul também. Ao usar o float no código abaixo, em ul li, vamos fazer com que o background desapareça, pois uma está flutuando e a outra não. Para corrigir a situação, teriamos que usar o clear: both, mas eu achei uma forma melhor, que é justamente essa: colocando o float tanto em ul quanto ul li, pois desta forma, ambas vão flutuar*/ 
+}
+
+#topo ul li { /*Isto se chama "seletor descendente". Neste caso eu quero selecionar os li que estão dentro da ul e que estão dentro do id TOPO*/
+    float: left; /*Pense bem... Para os itens flutuar, como já foi dito em "ITENS", vamos ter que selecionar os itens da lista, neste caso os <li>*/
+
+}
+
+#topo ul a {
+    font-size: 0.9em;
+    display: block;
+    padding: 0.5em 1.5em; /*0.5 para inferior e superior e 1.5 para laterais*/
+    line-height: 2.1em; /*altura da linha*/
+    text-decoration: none; /*Lembre-se: "list-style" em ul's; "text-decoration" em links.*/
+    color: #fff;
+    background: url(../imagens/divisor.png)no-repeat left center;
+}
+
+#topo ul .primeiro a { /*vamos remover o divisor que ficou no começo da ul. Para isso, vamos ter que criar uma class dentro da ul a em questão. Em resumo, eu quero selecionar o link que tem a classe 'primeiro' aplicado dentro de uma ul */
+    background: none;/*Basicamente, vou remover o divisor do começo da nossa lista.*/
+}
+
+#topo ul a:hover {
+    color: #69001d;
+}
+
+/*Agora vamos fazer o marcador de navegador das ul, assim o usuário vai saber identificar em qual página ele está:*/
+/*vou selecionar o body que tem classe home e com o id navegacao, em seguida vou selecionar o 'a', que tem o id 'home'*/
+body.home #navegacao a#home, /*lembre-se sempre de especificar todas as id e classes, pois em um site grande teremos varias ids e classes diferentes*/
+body.brasil #navegacao a#brasil,
+body.internacional #navegacao a#internacional, /*Vou no body que tem como classe 'internacional',em seguida vou ir dentro do id 'navegacao' e selecionar o link que tem como id 'internacional'*/
+body.economia #navegacao a#economia,
+body.saude #navegacao a#saude,
+body.ciencia #navegacao a#ciencia,
+body.fotos #navegacao a#fotos
+{
+    color: #fff;
+    background: #de003e;
+    cursor: text; /*vai ficar com a barrinha de texto, indicando ao usuário que não é necessário clicar novamente no mesmo lugar, pois o mesmo já está na página.*/
+}
+
+/*Configuração layout três colunas*/
+
+#conteudo {
+    margin-top: 60px;
+    background: #f5f5f5;
+    
+}
+
+#lateral {
+    width: 180px;
+    float: left;
+    margin: 0 0 20px -750px; /*20px para ter um espaçamento inferior entre o rodape e os 750px negativos é devido ao tamanho do nosso container (lembre-se que sobrou 30px do nosso cálculo 270 + 270 + 180 = 720). Ao colocarmos -750px, a nossa barra lateral vai se mover para o início do container, e é isso que queremos, pois mesmo utilizando o float, não conseguimos move-lá para o local desejado.*/
+}
+
+#primario {
+    width: 270px;
+    float: left;
+    margin: 0 0 20px 195px;
+}
+
+
+/*Com o nosso container tem apenas 750px, então vou definir 270px para os conteúdos 'primario' e 'secundario', 180px para os laterais. Com isso vamos ter 720px, sobrou 30px, então vamos definir 15 de espaçamento entre os conteúdos.*/
+/* #tres-colunas #primario { É de extrema importância que o primário apareça primeiro por questão de acessibilidade, ou seja, o leitor de voz para pessoas deficiêntes */
+    /* width: 270px; */
+    /* float: left; */
+    /* margin: 0 0 20px 195px os 20px são para ter um espaçamento inferior entre o rodape e os 195px são para ter um espaçamento para entrar a 'lateral'. Com isso, o nosso 'primario' vai se mover para à direita, gerando assim um espaçamento de 15px para mover a barra lateral para o início.; */
+    
+/* } */
+
+#duas-colunas #primario {
+    width: 555px;
+}
+
+#uma-coluna #primario {
+    width: 750px;
+    margin: 0 0 20px 0;
+}
+
+
+#secundario {
+    width: 270px;
+    float: left;
+    margin: 0 0 20px 15px;
+}
+
+/*Caixa*/
+.caixa {
+    margin: 10px 0;
+    padding: 5px;
+    background: #f3f3f3 url(../imagens/fundo-caixa.png);
+}
+
+h2 {
+    font-size: 1em;
+    background: #294c71;
+    color: #fff;
+    padding: 5px;
+}
+
+.caixa-conteudo {
+    background: #fff;
+    padding: 5px;
+    margin-top: 5px;
+
+}
+
+/*Formatar menus laterais*/
+#lateral ul a {
+    font-size: 0.9em;
+    padding: 3px;
+    display: block; /*Links são elementos do tipo inline. Para definir uma altura para elementos do tipo inline, é necessário converter o display para 'block'*/
+    line-height: 30px;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px solid #f3f3f3;
+
+}
+
+#lateral ul a:hover {
+    background: #f9f9f9 url(../imagens/marcador.png) no-repeat left center;
+    color: #a1a1a1;
+    padding-left: 20px;
+}
+
+/*Formatando formulários*/
+
+label {
+    display: block;
+    cursor: pointer; /*Para passar o mouse encima do label e aparecer uma mãozinha indicando que é clicável*/
+}
+
+input {
+    padding: 5px;
+    width: 125px;
+    font-size: 0.9em;
+    background-color: #fff;
+}
+
+input.submit {
+    width: 80px;
+    color: #fff;
+    background-color: #b10333;
+    border: 2px solid #870529;
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+/*Formatando imagens*/
+img.imagem-principal {
+    width: 98%;
+    border: 3px solid #dfdfdf;
+}
+
+/*Formatando cabeçalhos*/
+h3 {
+    text-transform: uppercase; /*Transforma as letras em maiúscula*/
+    display: inline;
+    font-size: 0.8em;
+    padding: 3px;
+}
+
+.destaque h3 { /*vou formatar todos os h3 que estiverem dentro da class 'destaque'*/
+    background: #b10333;
+    color: #fff;
+}
+
+.entrevista h3 {
+    background: #de003e;
+    color: orange;
+}
+
+/*Formatando lista de notícias*/
+#lista-noticias li {
+    padding: 2px;
+    border-bottom: 1px solid #ccc;
+    height: 62px;
+}
+
+#lista-noticias li a img {
+    float: left;
+    margin: 5px;
+}
+
+#lista-noticias li a{
+    text-decoration: none;
+}
+
+#lista-noticias li a h3{
+    font-size: 0.8em;
+    padding: 0px;
+    color: #3e7ab9;
+}
+
+#lista-noticias li a p{
+    font-size: 0.7em;
+    color: #000;
+}
+
+#lista-noticias li:hover{ /*li:hover, fará com que a lista toda fique formatada, e não apenas o link*/
+    background: #eee;
+    cursor: pointer;
+}
+
+/*Rodape*/
+#container-rodape {
+    background: #294c71;
+    padding: 20px;
+}
+
+#rodape {
+    width: 750px;
+    margin: 0 auto;
+    color: #fff;
+}
+
+
+
+
+
